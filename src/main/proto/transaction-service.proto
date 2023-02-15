@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+
+option java_multiple_files = true;
+option java_package = "br.com.content4devs.v1.transaction";
+
+package br.com.content4devs.v1.transaction;
+
+service TransactionService {
+  rpc create (TransactionRequest) returns (TransactionResponse) {}
+  rpc getById (TransactionId) returns (TransactionResponse) {}
+  rpc getByPeriod (Period) returns (stream TransactionResponse) {}
+  rpc createBatchTransactions (stream TransactionRequest) returns (BatchTransactionResponse) {}
+  rpc createTransactionStream (stream TransactionRequest) returns (stream TransactionResponse) {}
+}
+
+message TransactionId {
+  int64 id = 1;
+}
+
+message Period {
+  string startDate = 1;
+  string endDate = 2;
+}
+
+message BatchTransactionResponse {
+  string message = 1;
+  int32 totalTransactionsCreated = 2;
+}
+
+message TransactionRequest {
+  int64 accountId = 1;
+  string amount = 2;
+  OperationType operationType = 3;
+  string transactionDate = 4;
+}
+
+message TransactionResponse {
+  int64 id = 1;
+  int64 accountId = 2;
+  string amount = 3;
+  OperationType operationType = 4;
+  string transactionDate = 5;
+}
+
+enum OperationType {
+  UNKNOWN_OPERATION_TYPE = 0;
+  DEBIT = 1;
+  CREDIT = 2;
+}

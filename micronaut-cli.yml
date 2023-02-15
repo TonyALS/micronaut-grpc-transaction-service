@@ -1,0 +1,6 @@
+applicationType: grpc
+defaultPackage: br.com.content4devs
+testFramework: junit
+sourceLanguage: java
+buildTool: gradle_kotlin
+features: [annotation-api, app-name, data, data-jpa, flyway, gradle, grpc, jackson-databind, java, java-application, jdbc-hikari, junit, logback, micronaut-build, postgres, readme, shade, test-resources, yaml]

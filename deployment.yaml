@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: transaction-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: transaction-service
+  template:
+    metadata:
+      labels:
+        app: transaction-service
+    spec:
+      containers:
+      - name: transaction-service
+        image: tonyals/transaction-service:0.0.3
+        ports:
+        - containerPort: 50051
+        env:
+          - name: POSTGRES_URL
+            value: "192.168.1.12:5432"

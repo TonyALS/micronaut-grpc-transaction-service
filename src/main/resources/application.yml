@@ -1,0 +1,26 @@
+micronaut:
+  application:
+    name: transaction-service
+
+grpc:
+  server:
+    port: 50051
+  client:
+    plaintext: true
+
+datasources:
+  default:
+    url: jdbc:postgresql://${POSTGRES_URL}/transactiondb
+    driver-class-name: org.postgresql.Driver
+    db-type: postgres
+    username: postgres
+    password: password
+
+flyway:
+  datasources:
+    default:
+      enabled: true
+
+token:
+  server:
+    secret: "asdfSFS34wfsdfsdfSDSD32dfsddDDerQSNCK34SOWEK5354fdgdf4"
